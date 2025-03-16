@@ -2,7 +2,7 @@ package demo2;
 
 final public class Test {
     public void main(String[] args) {
-        //若main函数中没有static修饰 则需要构造一个对象
+        //非静态的main方法
         Test test = new Test();
         test.fun2();
     }
@@ -36,5 +36,6 @@ final public class Test {
         //向上转型
         animal.eat();//动态绑定
     }
+
 
 }
