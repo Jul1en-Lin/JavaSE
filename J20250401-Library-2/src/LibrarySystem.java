@@ -3,6 +3,11 @@ import user.User;
 import user.factory.AdminUserFactory;
 import user.factory.IUserFactory;
 import user.factory.NormalUserFactory;
+import user.ProxyUser;
+import user.AdminUser;
+import user.NormalUser;
+
+import java.util.Scanner;
 
 public class LibrarySystem {
     public static void main(String[] args) {
