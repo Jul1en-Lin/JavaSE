@@ -4,7 +4,7 @@ import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 
-public class Book {
+public class Book implements Comparable<Book>{
     //书的ID-编号
     private int bookId;
     //书名
@@ -119,5 +119,10 @@ public class Book {
         stringBuilder.append(borrowedCount).append(',');
         stringBuilder.append(shelDate != null ? shelDate.format(DateTimeFormatter.ISO_LOCAL_DATE_TIME):null);
         return stringBuilder.toString();
+    }
+
+    @Override
+    public int compareTo(Book o) {
+        return o.getBorrowedCount() - this.getBorrowedCount();
     }
 }

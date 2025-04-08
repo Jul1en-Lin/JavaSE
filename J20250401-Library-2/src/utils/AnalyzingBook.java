@@ -3,9 +3,12 @@ package utils;
 import Book.Book;
 import com.bit.utils.FileUtils;
 
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+
 public class AnalyzingBook {
     //存储书籍
-    public void storeObject(Book[] books, String name, String filename) throws Exception{
+    public void storeBook(Book[] books, String name, String filename) throws Exception{
         //统计有效书籍
         int BooksUseLen = 0;
         for (int i = 0; i < books.length; i++) {
@@ -24,15 +27,27 @@ public class AnalyzingBook {
             }
         }
     }
-    //每次读取书籍
-    public Book[] loadObject(String filename) {
-        //解析书籍
-        String content = FileUtils.readFile(filename);
 
-
+    private Book parseBookJson(String json) {
+        String[] pairs = json.split(",");
+        int bookId = Integer.parseInt(pairs[0]);
+        String title = pairs[1];
+        String author = pairs[2];
+        String category = pairs[3];
+        int publishYear = Integer.parseInt(pairs[4]);
+        boolean isBorrowed = Boolean.parseBoolean(pairs[5]);
+        int borrowedCount = Integer.parseInt(pairs[6]);
+        LocalDateTime shelDate = LocalDateTime.parse(pairs[7]);
+        if (title != null && author != null && category != null) {
+            Book book = new Book(title,author,category,publishYear,shelDate);
+            book.setBookId(bookId);
+            book.setBorrowedCount(borrowedCount);
+            return book;
+        }
+        return null;
     }
 
     public static void main(String[] args) {
-
+        System.out.println("test");
     }
 }
