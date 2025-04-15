@@ -1,5 +1,6 @@
 package Book;
 
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 
@@ -11,9 +12,9 @@ public class Book {
     private int publishYear; // 出版年份
     private boolean isBorrowed; // 借阅状态
     private int borrowedCount; // 借阅次数
-    private LocalDateTime shelfDate;//上架时间
+    private LocalDate shelfDate;//上架时间
 
-    public Book(String title, String author, String category, int publishYear, LocalDateTime shelfDate) {
+    public Book(String title, String author, String category, int publishYear, LocalDate shelfDate) {
         this.title = title;
         this.author = author;
         this.category = category;
@@ -77,11 +78,11 @@ public class Book {
         this.borrowedCount = borrowedCount;
     }
 
-    public LocalDateTime getShelfDate() {
+    public LocalDate getShelfDate() {
         return shelfDate;
     }
 
-    public void setShelfDate(LocalDateTime shelfDate) {
+    public void setShelfDate(LocalDate shelfDate) {
         this.shelfDate = shelfDate;
     }
 
@@ -90,6 +91,20 @@ public class Book {
     }
     public void decrementBorrowCount(){
         this.borrowedCount--;
+    }
+
+    @Override
+    public String toString() {
+        return "Book{" +
+                "bookId=" + bookId +
+                ", title='" + title + '\'' +
+                ", author='" + author + '\'' +
+                ", category='" + category + '\'' +
+                ", publishYear=" + publishYear +
+                ", isBorrowed=" + isBorrowed +
+                ", borrowedCount=" + borrowedCount +
+                ", shelfDate=" + shelfDate +
+                '}';
     }
 
     public String toJson() {
@@ -101,7 +116,7 @@ public class Book {
         json.append(publishYear).append(",");
         json.append(isBorrowed).append(",");
         json.append(borrowedCount).append(",");
-        json.append(shelfDate != null ? shelfDate.format(DateTimeFormatter.ISO_LOCAL_DATE_TIME) : null);
+        json.append(shelfDate != null ? shelfDate.format(DateTimeFormatter.ISO_LOCAL_DATE) : null);
         return json.toString();
     }
 }

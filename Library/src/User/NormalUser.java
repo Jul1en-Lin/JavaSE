@@ -1,13 +1,17 @@
 package User;
 
+import Utils.ScannerSingleton;
+
 import java.util.Scanner;
 
 public class NormalUser extends User{
 
-    Scanner scanner = new Scanner(System.in);
+    //Scanner scanner = new Scanner(System.in);
+    public Scanner scanner;
 
     public NormalUser(String name, int userID) {
         super(name, userID, "普通用户");
+        scanner = ScannerSingleton.getScanner();
     }
     private void loadBorrowedBook() {
     }

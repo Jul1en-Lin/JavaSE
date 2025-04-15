@@ -1,13 +1,20 @@
 package User;
 
+import Book.Library;
+import Utils.ScannerSingleton;
+
 import java.util.Scanner;
 
 public class AdminUser extends User{
-
+    public Scanner scanner;
+    public Library library;
     public AdminUser(String name, int userID) {
         super(name, userID, "管理员");
+        scanner = ScannerSingleton.getScanner();
+        library = Library.getLibrary();
     }
 
+    //Scanner scanner = new Scanner(System.in);
     @Override
     public int display() {
         System.out.println("管理员 " + name + " 的操作菜单:");
@@ -22,12 +29,13 @@ public class AdminUser extends User{
         System.out.println("9. 查看库存状态");
         System.out.println("10. 检查超过⼀年未下架的图书");
         System.out.println("请选择你的操作：");
-        Scanner scanner = new Scanner(System.in);
+
         return scanner.nextInt();
     }
     //上架图书
     public void addBook() {
-
+        System.out.println("AdminUser类执行");
+        library.addBook();
     }
     //图书修改
     public void updateBook() {
