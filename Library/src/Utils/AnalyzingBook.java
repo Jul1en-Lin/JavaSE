@@ -34,8 +34,13 @@ public class AnalyzingBook {
     //从文件读取数据
     public Book[] loadObject(String filename)throws IOException{
         FileUtils fileUtils = new FileUtils();
-        String ret = fileUtils.readFile(filename);
-        String[] bookJsonStrings = ret.split("\n");
+        String content = fileUtils.readFile(filename);
+
+        if (content == null || content.isEmpty()) {
+            System.out.println("图书馆为空");
+            return null;
+        }
+        String[] bookJsonStrings = content.split("\n");
         //把bookJsonString 字符串组装成一个个书籍对象（因为要把String[]字符串解析为Book对象）
         Book[] bookList = new Book[bookJsonStrings.length];
         for (int i = 0; i < bookList.length; i++) {
@@ -65,7 +70,7 @@ public class AnalyzingBook {
     }
 
 
-    public static void main(String[] args) {
+    public static void main1(String[] args) {
         Book[] books = new Book[4];
         books[0] = new Book("java", "gaobo", "编程", 1994, LocalDate.of(2023, 9, 24));
         books[1] = new Book("mysql", "lisi", "编程", 1999, LocalDate.of(2024, 2, 10));

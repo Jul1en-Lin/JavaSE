@@ -4,7 +4,7 @@ import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 
-public class Book {
+public class Book implements Comparable<Book>{
     private int bookId;//书的ID
     private String title;//书名
     private String author;//作者
@@ -60,6 +60,10 @@ public class Book {
 
     public void setPublishYear(int publishYear) {
         this.publishYear = publishYear;
+    }
+
+    public void setBorrowedCount(int borrowedCount) {
+        this.borrowedCount = borrowedCount;
     }
 
     public boolean isBorrowed() {
@@ -118,5 +122,10 @@ public class Book {
         json.append(borrowedCount).append(",");
         json.append(shelfDate != null ? shelfDate.format(DateTimeFormatter.ISO_LOCAL_DATE) : null);
         return json.toString();
+    }
+
+    @Override
+    public int compareTo(Book o) {
+        return o.getBorrowedCount() - this.getBorrowedCount();
     }
 }

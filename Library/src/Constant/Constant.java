@@ -5,4 +5,5 @@ public class Constant {
     public static final String ALL_BOOK_FILE_NAME = "allBooks.txt";
     //默认容量
     public static final int CAPACITY = 5;
+    public static final String BORROWED_BOOK_FILE_NAME = "allBorrowedBooks.txt";
 }

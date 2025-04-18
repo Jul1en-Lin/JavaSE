@@ -52,6 +52,7 @@ public class ProxyUser {
         }catch (PermissionException e){
             e.printStackTrace();
         }
+        ((AdminUser)(this.realUser)).updateBook();
     }
     //下架书籍
     public void removeBook() {
@@ -60,6 +61,7 @@ public class ProxyUser {
         }catch (PermissionException e){
             e.printStackTrace();
         }
+        ((AdminUser)(this.realUser)).removeBook();
     }
     //统计借阅次数
     public void borrowBookCount() {
@@ -68,6 +70,7 @@ public class ProxyUser {
         }catch (PermissionException e){
             e.printStackTrace();
         }
+        ((AdminUser)(this.realUser)).borrowBookCount();
     }
     //查询最受欢迎的前N本书
     public void generateBook() {
@@ -76,6 +79,7 @@ public class ProxyUser {
         }catch (PermissionException e){
             e.printStackTrace();
         }
+        ((AdminUser)(this.realUser)).generateBook();
     }
     //查看库存状态
     public void checkInventoryStatus() {
@@ -84,6 +88,7 @@ public class ProxyUser {
         }catch (PermissionException e){
             e.printStackTrace();
         }
+        ((AdminUser)(this.realUser)).checkInventoryStatus();
     }
     //并移除上架超过⼀年的图书
     public void checkAndRemoveOldBooks() {
@@ -92,6 +97,7 @@ public class ProxyUser {
         }catch (PermissionException e){
             e.printStackTrace();
         }
+        ((AdminUser)(this.realUser)).checkAndRemoveOldBooks();
     }
     //退出系统
     public void exit() {
@@ -115,6 +121,7 @@ public class ProxyUser {
         }catch (PermissionException e){
             e.printStackTrace();
         }
+        ((NormalUser)(this.realUser)).borrowBook();
     }
     //归还图书
     public void returnBook () {
@@ -123,6 +130,7 @@ public class ProxyUser {
         }catch (PermissionException e){
             e.printStackTrace();
         }
+        ((NormalUser)(this.realUser)).returnBook();
     }
     //查看个人借阅的图书情况
     public void viewBorrowBooks () {
@@ -131,6 +139,7 @@ public class ProxyUser {
         }catch (PermissionException e){
             e.printStackTrace();
         }
+        ((NormalUser)(this.realUser)).viewBorrowBooks();
     }
 
     public void handleOperation(int choice) {
@@ -158,7 +167,7 @@ public class ProxyUser {
                     borrowBookCount();
                     break;
                 case 8:
-                    generateBook();
+                     generateBook();
                     break;
                 case 9:
                     checkInventoryStatus();
